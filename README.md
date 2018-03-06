@@ -23,7 +23,7 @@ following contents:
 ```JavaScript
 module.exports = {
     extends: [
-        'bbm',
+        '@boughtbymany/bbm',
     ],
 }
 ```
@@ -90,7 +90,7 @@ override them in the `.eslintrc.js` file as follows:
 ```JavaScript
 module.exports = {
     extends: [
-        'bbm',
+        '@boughtbymany/bbm',
     ],
     rules: {
         // FIXME: Temporarily disabled – please clean up.
