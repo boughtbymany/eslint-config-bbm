@@ -64,7 +64,6 @@ module.exports = {
             },
         ],
         'no-invalid-this': 'error',
-        'newline-per-chained-call': 'error',
         'no-warning-comments': 'warn',
         'no-implicit-coercion': [
             'error', {
