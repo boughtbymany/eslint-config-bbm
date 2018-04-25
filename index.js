@@ -51,7 +51,13 @@ module.exports = {
                     0, // Often used to get the first item in a list and comparison functions.
                     1, // Often used for comparison functions.
                     2, // Often used to modulate between odd and even and to format currency.
+                    10, // Common exponent.
                     100, // Often used for currency calculations.
+                    200, // HTTP status: OK.
+                    401, // HTTP status: Unauthorized.
+                    403, // HTTP status: Forbidden.
+                    1000, // Milliseconds in a second.
+                    1024, // Often used in data size conversions.
                 ],
                 'ignoreArrayIndexes': true,
                 'enforceConst': true,
