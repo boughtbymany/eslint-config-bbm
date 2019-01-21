@@ -1,5 +1,4 @@
-# Bought By Many ESLint Config
-
+# Bought By Many - ESLint Config
 
 ## Goals
 
@@ -7,18 +6,23 @@
 - Flag areas where code can be improved.
 - Promote consistency in code style & structure.
 
-
 ## Installation
 
-```Shell
-$ yarn add --dev @boughtbymany/eslint-config-bbm
+```shell
+npm i -D @boughtbymany/eslint-config-bbm
 ```
 
+You will also need to install the peer dependencies (the dependencies required
+will depend on the configuration being used). To list the peer dependencies:
+
+```shell
+npm info @boughtbymany/eslint-config-bbm peerDependencies
+```
 
 ## Configuration
 
-To use the standard configuration, create an `.eslintrc.js` file with the
-following contents:
+To use the standard configuration for JavaScript, create an `.eslintrc.js` file
+with the following contents:
 
 ```JavaScript
 module.exports = {
@@ -31,58 +35,118 @@ module.exports = {
 You can also set up an `.eslintignore` file to ignore any files that shouldn't
 be linted:
 
-```
+```text
 /dist/
 ```
 
 The `node_modules` directory is always ignored.
 
+### Multiple Configurations
+
+This package also exposes other configurations:
+
+#### Vue.js
+
+To lint [Vue.js](https://vuejs.org/) single-file components (`*.vue`), add the following to the
+`.eslintrc.js` file:
+
+```JavaScript
+module.exports = {
+  extends: ["@boughtbymany/eslint-config-bbm/vue"],
+}
+```
+
+#### Node.js
+
+To lint [Node.js](https://nodejs.org/en/) scripts add the following to the `.eslintrc.js` file:
+
+```JavaScript
+module.exports = {
+  extends: ["@boughtbymany/eslint-config-bbm/node"],
+}
+```
+
+#### Jest
+
+To lint [Jest](https://jestjs.io/) test scripts, add the following to the `.eslintrc.js` file:
+
+```JavaScript
+module.exports = {
+  extends: ["@boughtbymany/eslint-config-bbm/jest"],
+}
+```
+
+#### HTML Scripts
+
+To lint inline scripts contained within HTML files, add the following to the
+`.eslintrc.js` file:
+
+```JavaScript
+module.exports = {
+  extends: ["@boughtbymany/eslint-config-bbm/html"],
+}
+```
+
 ## How to use
 
 ### Command line
 
-Add a `package.json` script:
+Add `package.json` scripts, e.g:
 
 ```json
 {
     "scripts": {
-        "lint:js": "eslint --ext .js,.vue src"
+        "lint:js": "eslint --ext .js,.vue src",
+        "lint:js:fix": "npm run lint:js --fix"
     }
 }
 ```
 
 You will then be able to lint your codebase by running the command
-`yarn lint:js` and fix many issues with `yarn lint:js --fix`.
+`npm run lint:js` and fix many issues with `npm run lint:js:fix`.
 
+### IDE Integrations
 
-### Atom
+#### Atom
 
-```Shell
-$ apm install linter-eslint
+```shell
+apm install linter-eslint
 ```
 
 Go to *Settings > Packages > linter-eslint > Settings* and set the list of
 scopes to:
 
-```
+```text
 source.js, source.babel, source.vue, text.html.vue, text.html.basic
 ```
 
+#### Visual Studio Code
 
-### Visual Studio Code
-
-```Shell
-$ code --install-extension dbaeumer.vscode-eslint
+```shell
+code --install-extension dbaeumer.vscode-eslint
 ```
 
+If Prettier is being used, add the following setting:
+
+```JSON
+"prettier.eslintIntegration": true,
+```
+
+To enable Vue templates to be linted by the extension, add the following to your
+settings:
+
+```JSON
+"eslint.validate": [
+  "javascript",
+  "vue"
+],
+```
 
 ## Tips
 
-
 ### Migrating old codebases
 
-
-Run `yarn lint --fix` to clean up everything that can be cleaned up
+Run `npm run lint --fix` to clean up everything that can be cleaned up
 automatically and then commit those changes by themselves.  If there are a lot
 of additional warnings that you'd rather not deal with straight away, then
 override them in the `.eslintrc.js` file as follows:
@@ -101,7 +165,6 @@ module.exports = {
 
 Clean up these warnings as and when it's convenient.
 
-
 ### Version control
 
 Don't mix logical changes with lint changes in the same commit – if you are
@@ -112,7 +175,6 @@ vice-versa.
 If your editor has the feature *Fix errors on save* or similar, disable this.
 Otherwise it's likely you will mix logical and lint changes accidentally.
 
-
 ### Excluding code from linting
 
 If there's an exceptional situation where a rule that should normally be
@@ -120,7 +182,6 @@ followed should be ignored in that specific case, disable that rule for that
 specific section of code.
 
 Try to limit the size and scope of the exclusion as much as possible.
-
 
 #### Disabling rules for a single line
 
@@ -134,7 +195,6 @@ new Foo() // This code would normally generate a warning.
 ```JavaScript
 new Foo() // eslint-disable-line no-new
 ```
-
 
 #### Disabling rules for larger sections
 
@@ -157,7 +217,6 @@ that the rule is too noisy, or you may be doing something incorrectly.  Consider
 whether the rule should be removed from this configuration, or if there's a
 better way of writing the code in question.
 
-
 ### Adding new rules
 
 New rules should be added when they stand a chance of catching a mistake, push
@@ -169,14 +228,12 @@ Sometimes new rules get added to this package's dependencies.  It's worth
 reviewing the changes when updating these dependencies to see if there are any
 useful additions we can enable.
 
-
 ### Removing rules
 
 If there's a rule that is generating too much noise in code that is otherwise
 perfectly fine, consider removing it from this configuration.  Before doing so,
 take the time to understand why the rule exists and whether there's a better way
 of writing the code in question.
-
 
 ## More information
 
