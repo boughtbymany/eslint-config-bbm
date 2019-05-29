@@ -9,7 +9,7 @@
     "email": "tech-team@boughtbymany.com",
     "url": "https://boughtbymany.com/"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "lint": "npm run lint:js && npm run lint:md",
