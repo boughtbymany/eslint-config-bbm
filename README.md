@@ -47,8 +47,8 @@ This package also exposes other configurations:
 
 #### Vue.js
 
-To lint [Vue.js](https://vuejs.org/) single-file components (`*.vue`), add the following to the
-`.eslintrc.js` file:
+To lint [Vue.js](https://vuejs.org/) single-file components (`*.vue`), add the
+following to the `.eslintrc.js` file:
 
 ```JavaScript
 module.exports = {

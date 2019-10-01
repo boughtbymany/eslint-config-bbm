@@ -3,36 +3,28 @@ module.exports = {
     es6: true,
     node: true,
   },
-  plugins: ["prettier"],
-  extends: ["eslint:recommended", "plugin:prettier/recommended"],
+  plugins: ['prettier', 'jsdoc'],
+  extends: [
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+    'plugin:jsdoc/recommended',
+  ],
 
   parserOptions: {
-    sourceType: "module",
+    sourceType: 'module',
   },
 
   rules: {
-    "prettier/prettier": [
-      "error",
+    'prettier/prettier': [
+      'error',
       {
         semi: false,
-        trailingComma: "es5",
-        singleQuote: true
+        trailingComma: 'es5',
+        singleQuote: true,
       },
     ],
-    "require-jsdoc": [
-      "warn",
-      {
-        require: {
-          FunctionDeclaration: true,
-          MethodDefinition: true,
-          ClassDeclaration: true,
-          ArrowFunctionExpression: false,
-          FunctionExpression: true,
-        },
-      },
-    ],
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-var": "error",
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-var': 'error',
   },
 }
