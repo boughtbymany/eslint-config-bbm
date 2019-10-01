@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ["@boughtbymany/bbm", "plugin:node/recommended"],
+  extends: ['./index.js', 'plugin:node/recommended'],
 }
