@@ -56,6 +56,17 @@ module.exports = {
 }
 ```
 
+#### Nuxt.js
+
+To lint [Nuxt.js](https://nuxtjs.org/) projects, add the
+following to the `.eslintrc.js` file:
+
+```JavaScript
+module.exports = {
+  extends: ["@boughtbymany/eslint-config-bbm/nuxt"],
+}
+```
+
 #### Node.js
 
 To lint [Node.js](https://nodejs.org/en/) scripts add the following to the `.eslintrc.js` file:
