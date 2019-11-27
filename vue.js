@@ -7,11 +7,7 @@ module.exports = {
   rules: {
     // Priority B: Strongly Recommended (Improving Readability)
     'vue/singleline-html-element-content-newline': 'off', // override for headers with dots
-    'vue/attribute-hyphenation': 'off',
     'vue/name-property-casing': 'off', // override for Mutt widgets
-    'vue/require-default-prop': 'off',
-    'vue/v-bind-style': ['error', 'longform'], // override default
-    'vue/v-on-style': ['error', 'longform'], // override default
 
     // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
     'vue/no-v-html': 'off', // override for translation
