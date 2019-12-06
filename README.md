@@ -9,10 +9,10 @@
 ## Installation
 
 ```shell
-npm i -D @boughtbymany/eslint-config-bbm
+npm i -D @boughtbymany/eslint-config-bbm eslint eslint-config-prettier eslint-plugin-jsdoc eslint-plugin-prettier prettier
 ```
 
-You will also need to install the peer dependencies (the dependencies required
+You may also need to install additional peer dependencies (the dependencies required
 will depend on the configuration being used). To list the peer dependencies:
 
 ```shell
