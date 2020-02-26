@@ -98,6 +98,16 @@ module.exports = {
 }
 ```
 
+#### Cucumber
+
+To lint [Cucumber](https://cucumber.io/) test scripts, add the following to the `.eslintrc.js` file:
+
+```JavaScript
+module.exports = {
+  extends: ["@boughtbymany/eslint-config-bbm/cucumber"],
+}
+```
+
 ## How to use
 
 ### Command line
