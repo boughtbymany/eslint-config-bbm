@@ -1,6 +1,6 @@
 {
   "name": "@boughtbymany/eslint-config-bbm",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Bought By Many ESLint Config",
   "homepage": "https://github.com/boughtbymany/eslint-config-bbm",
   "repository": "github:boughtbymany/eslint-config-bbm",
@@ -20,6 +20,7 @@
     "babel-eslint": "^10.0.0",
     "eslint": "^6.0.0",
     "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-cucumber": "^1.4.0",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-jest": "^22.17.0",
     "eslint-plugin-jsdoc": "^15.12.0",
@@ -35,6 +36,7 @@
     "babel-eslint": "^10.0.0",
     "eslint": "^6.0.0",
     "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-cucumber": "^1.4.0",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-jsdoc": "^18.1.5",
