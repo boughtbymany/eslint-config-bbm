@@ -1,6 +1,6 @@
 module.exports = {
   plugins: ['cucumber'],
-  extends: ['./index.js', 'plugin:cucumber/recommended'],
+  extends: ['./index.js'],
   rules: {
     'cucumber/async-then': ['error', { all: true }],
     'cucumber/expression-type': 2,
