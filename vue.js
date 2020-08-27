@@ -2,8 +2,13 @@
  * Rules for Vue can be found at https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules
  */
 module.exports = {
-  plugins: ['vue'],
-  extends: ['./index.js', 'plugin:vue/recommended', '@vue/prettier'],
+  plugins: ['vue', 'vue-a11y'],
+  extends: [
+    './index.js',
+    'plugin:vue/recommended',
+    '@vue/prettier',
+    'plugin:vue-a11y/base',
+  ],
   rules: {
     // Priority B: Strongly Recommended (Improving Readability)
     'vue/singleline-html-element-content-newline': 'off', // override for headers with dots
