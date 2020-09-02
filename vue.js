@@ -20,7 +20,8 @@ module.exports = {
       2,
       {
         required: {
-          some: ['nesting', 'id'], // Only require nesting or id
+          // Only require one of nesting _or_ id.
+          some: ['nesting', 'id'],
         },
       },
     ],
