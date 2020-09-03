@@ -16,6 +16,15 @@ module.exports = {
 
     // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
     'vue/no-v-html': 'off', // override for translation
+    'vue-a11y/label-has-for': [
+      2,
+      {
+        required: {
+          // Only require one of nesting _or_ id.
+          some: ['nesting', 'id'],
+        },
+      },
+    ],
   },
   parserOptions: {
     parser: 'babel-eslint',
