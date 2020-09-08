@@ -2,7 +2,7 @@
  * Rules for Vue can be found at https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules
  */
 module.exports = {
-  plugins: ['vue', 'vue-a11y'],
+  plugins: ['vue', 'vuejs-accessibility'],
   extends: ['./index.js', 'plugin:vue/recommended', '@vue/prettier'],
   rules: {
     // Priority B: Strongly Recommended (Improving Readability)
@@ -11,14 +11,38 @@ module.exports = {
 
     // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
     'vue/no-v-html': 'off', // override for translation
-    // A11y rules taken from https://github.com/maranran/eslint-plugin-vue-a11y/blob/master/lib/configs/recommended.js
+    // A11y rules taken from https://github.com/vue-a11y/eslint-plugin-vuejs-accessibility/blob/master/src/index.js
     // But switched to warn
-    'vue-a11y/accessible-emoji': 'warn',
-    'vue-a11y/alt-text': 'warn',
-    'vue-a11y/anchor-has-content': 'warn',
-    'vue-a11y/mouse-events-have-key-events': 'warn',
-    'vue-a11y/click-events-have-key-events': 'off', // This rule has a bug https://github.com/maranran/eslint-plugin-vue-a11y/issues/28
-    'vue-a11y/label-has-for': [
+    'vuejs-accessibility/accessible-emoji': 'warn',
+    'vuejs-accessibility/alt-text': 'warn',
+    'vuejs-accessibility/anchor-has-content': 'warn',
+    'vuejs-accessibility/aria-props': 'warn',
+    'vuejs-accessibility/aria-role': [
+      'warn',
+      {
+        ignoreNonDOM: true,
+      },
+    ],
+    'vuejs-accessibility/aria-unsupported-elements': 'warn',
+    'vuejs-accessibility/click-events-have-key-events': 'warn',
+    'vuejs-accessibility/form-control-has-label': 'warn',
+    'vuejs-accessibility/heading-has-content': 'warn',
+    'vuejs-accessibility/iframe-has-title': 'warn',
+    'vuejs-accessibility/interactive-supports-focus': [
+      'warn',
+      {
+        tabbable: [
+          'button',
+          'checkbox',
+          'link',
+          'searchbox',
+          'spinbutton',
+          'switch',
+          'textbox',
+        ],
+      },
+    ],
+    'vuejs-accessibility/label-has-for': [
       2,
       {
         required: {
@@ -27,26 +51,20 @@ module.exports = {
         },
       },
     ],
-    'vue-a11y/form-has-label': 'warn',
-    'vue-a11y/no-autofocus': 'warn',
-    'vue-a11y/no-onchange': 'warn',
-    'vue-a11y/tabindex-no-positive': 'warn',
-    'vue-a11y/heading-has-content': 'warn',
-    'vue-a11y/no-distracting-elements': 'warn',
-    'vue-a11y/media-has-caption': 'warn',
-    'vue-a11y/no-access-key': 'warn',
-    'vue-a11y/iframe-has-title': 'warn',
-    'vue-a11y/interactive-supports-focus': 'warn',
-    'vue-a11y/aria-role': [
-      2,
+    'vuejs-accessibility/media-has-caption': 'warn',
+    'vuejs-accessibility/mouse-events-have-key-events': 'warn',
+    'vuejs-accessibility/no-access-key': 'warn',
+    'vuejs-accessibility/no-autofocus': [
+      'warn',
       {
         ignoreNonDOM: true,
       },
     ],
-    'vue-a11y/aria-props': 'warn',
-    'vue-a11y/aria-unsupported-elements': 'warn',
-    'vue-a11y/no-redundant-roles': 'warn',
-    'vue-a11y/role-has-required-aria-props': 'warn',
+    'vuejs-accessibility/no-distracting-elements': 'warn',
+    'vuejs-accessibility/no-onchange': 'warn',
+    'vuejs-accessibility/no-redundant-roles': 'warn',
+    'vuejs-accessibility/role-has-required-aria-props': 'warn',
+    'vuejs-accessibility/tabindex-no-positive': 'warn',
   },
   parserOptions: {
     parser: 'babel-eslint',
