@@ -2,12 +2,12 @@
  * Rules for Vue can be found at https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules
  */
 module.exports = {
-  plugins: ['vue', 'vue-a11y'],
+  plugins: ['vue', 'vuejs-accessibility'],
   extends: [
     './index.js',
     'plugin:vue/recommended',
     '@vue/prettier',
-    'plugin:vue-a11y/base',
+    'plugin:vuejs-accessibility/recommended',
   ],
   rules: {
     // Priority B: Strongly Recommended (Improving Readability)
@@ -16,7 +16,7 @@ module.exports = {
 
     // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
     'vue/no-v-html': 'off', // override for translation
-    'vue-a11y/label-has-for': [
+    'vuejs-accessibility/label-has-for': [
       2,
       {
         required: {
