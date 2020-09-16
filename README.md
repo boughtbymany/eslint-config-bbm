@@ -12,8 +12,9 @@
 npm i -D @boughtbymany/eslint-config-bbm eslint eslint-config-prettier eslint-plugin-jsdoc eslint-plugin-prettier prettier
 ```
 
-You may also need to install additional peer dependencies (the dependencies required
-will depend on the configuration being used). To list the peer dependencies:
+You may also need to install additional peer dependencies (the dependencies
+required will depend on the configuration being used). To list the peer
+dependencies:
 
 ```shell
 npm info @boughtbymany/eslint-config-bbm peerDependencies
@@ -24,11 +25,11 @@ npm info @boughtbymany/eslint-config-bbm peerDependencies
 To use the standard configuration for JavaScript, create an `.eslintrc.js` file
 with the following contents:
 
-```JavaScript
+```js
 module.exports = {
-    extends: [
-        '@boughtbymany/bbm',
-    ],
+  extends: [
+    '@boughtbymany/eslint-config-bbm',
+  ],
 }
 ```
 
@@ -43,14 +44,17 @@ The `node_modules` directory is always ignored.
 
 ### Multiple Configurations
 
-This package also exposes other configurations:
+This package also exposes other configurations. Note that you will likely have
+to install extra dev dependencies (as noted in the [Installation](#installation)
+section of this readme) when using these rules as they make use of extra
+plugins that are listed in this package's `peerDependencies`.
 
 #### Vue.js
 
 To lint [Vue.js](https://vuejs.org/) single-file components (`*.vue`), add the
 following to the `.eslintrc.js` file:
 
-```JavaScript
+```js
 module.exports = {
   extends: ["@boughtbymany/eslint-config-bbm/vue"],
 }
@@ -58,10 +62,10 @@ module.exports = {
 
 #### Nuxt.js
 
-To lint [Nuxt.js](https://nuxtjs.org/) projects, add the
-following to the `.eslintrc.js` file:
+To lint [Nuxt.js](https://nuxtjs.org/) projects, add the following to the
+`.eslintrc.js` file:
 
-```JavaScript
+```js
 module.exports = {
   extends: ["@boughtbymany/eslint-config-bbm/nuxt"],
 }
@@ -69,9 +73,10 @@ module.exports = {
 
 #### Node.js
 
-To lint [Node.js](https://nodejs.org/en/) scripts add the following to the `.eslintrc.js` file:
+To lint [Node.js](https://nodejs.org/en/) scripts add the following to the
+`.eslintrc.js` file:
 
-```JavaScript
+```js
 module.exports = {
   extends: ["@boughtbymany/eslint-config-bbm/node"],
 }
@@ -79,9 +84,10 @@ module.exports = {
 
 #### Jest
 
-To lint [Jest](https://jestjs.io/) test scripts, add the following to the `.eslintrc.js` file:
+To lint [Jest](https://jestjs.io/) test scripts, add the following to the
+`.eslintrc.js` file:
 
-```JavaScript
+```js
 module.exports = {
   extends: ["@boughtbymany/eslint-config-bbm/jest"],
 }
@@ -92,7 +98,7 @@ module.exports = {
 To lint inline scripts contained within HTML files, add the following to the
 `.eslintrc.js` file:
 
-```JavaScript
+```js
 module.exports = {
   extends: ["@boughtbymany/eslint-config-bbm/html"],
 }
@@ -100,9 +106,10 @@ module.exports = {
 
 #### Cucumber
 
-To lint [Cucumber](https://cucumber.io/) test scripts, add the following to the `.eslintrc.js` file:
+To lint [Cucumber](https://cucumber.io/) test scripts, add the following to the
+`.eslintrc.js` file:
 
-```JavaScript
+```js
 module.exports = {
   extends: ["@boughtbymany/eslint-config-bbm/cucumber"],
 }
@@ -116,15 +123,27 @@ Add `package.json` scripts, e.g:
 
 ```json
 {
-    "scripts": {
-        "lint:js": "eslint --ext .js,.vue src",
-        "lint:js:fix": "npm run lint:js --fix"
-    }
+  "scripts": {
+    "lint:js": "eslint --ext .js,.vue src",
+    "lint:js:fix": "npm run lint:js -- --fix"
+  }
 }
 ```
 
 You will then be able to lint your codebase by running the command
 `npm run lint:js` and fix many issues with `npm run lint:js:fix`.
+
+In a `vue-cli` project that'll use `eslint` as part of the standard lint
+process, the scripts should be more like:
+
+```json
+{
+  "scripts": {
+    "lint": "vue-cli-service lint --no-fix src tests",
+    "lint:fix": "vue-cli-service lint src tests",
+  }
+}
+```
 
 ### IDE Integrations
 
@@ -147,20 +166,29 @@ source.js, source.babel, source.vue, text.html.vue, text.html.basic
 code --install-extension dbaeumer.vscode-eslint
 ```
 
-If Prettier is being used, add the following setting:
-
-```JSON
-"prettier.eslintIntegration": true,
-```
-
 To enable Vue templates to be linted by the extension, add the following to your
 settings:
 
-```JSON
-"eslint.validate": [
-  "javascript",
-  "vue"
-],
+```json
+{
+  "eslint.validate": [
+    "javascript",
+    "vue"
+  ]
+}
+```
+
+To enable automatic fixing of errors on save first we turn of auto formatting on
+save if that's enabled and then enable the eslint extension's `fixAll` code
+action:
+
+```json
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
 ```
 
 ## Tips
@@ -168,33 +196,35 @@ settings:
 ### Migrating old codebases
 
 Run `npm run lint --fix` to clean up everything that can be cleaned up
-automatically and then commit those changes by themselves.  If there are a lot
-of additional warnings that you'd rather not deal with straight away, then
-override them in the `.eslintrc.js` file as follows:
+automatically and then commit those changes by themselves. If there are a lot of
+additional warnings that you'd rather not deal with straight away, then override
+them in the `.eslintrc.js` file as follows:
 
-```JavaScript
+```js
 module.exports = {
-    extends: [
-        '@boughtbymany/bbm',
-    ],
-    rules: {
-        // FIXME: Temporarily disabled – please clean up.
-        'some-inconvenient-rule': 'off',
-    }
+  extends: [
+    '@boughtbymany/eslint-config-bbm',
+  ],
+  rules: {
+    // FIXME: Temporarily disabled – please clean up.
+    'some-inconvenient-rule': 'off',
+  }
 }
 ```
 
-Clean up these warnings as and when it's convenient.
+Remember to clean up these warnings as and when it's convenient.
 
 ### Version control
 
 Don't mix logical changes with lint changes in the same commit – if you are
 implementing a feature in an older codebase that doesn't already follow these
-lint rules, then commit any lint cleanups first, then implement the feature, or
+lint rules, then commit any lint clean ups first, then implement the feature, or
 vice-versa.
 
-If your editor has the feature *Fix errors on save* or similar, disable this.
-Otherwise it's likely you will mix logical and lint changes accidentally.
+If your editor has a feature like "automatically fix errors on save", be aware
+that you may have to therefore partially add files to your commits. If this is
+too much effort for you, then you can/should disable the automatic fixing of
+errors so you don't have this situation.
 
 ### Excluding code from linting
 
@@ -204,25 +234,34 @@ specific section of code.
 
 Try to limit the size and scope of the exclusion as much as possible.
 
+Do **not** just disable `eslint` altogether - always provide a rule name and,
+where useful, give a reason as to why you're disabling it.
+
 #### Disabling rules for a single line
 
-```JavaScript
+```js
 // eslint-disable-next-line no-new
 new Foo() // This code would normally generate a warning.
 ```
 
-…or:
+Or:
 
-```JavaScript
+```js
 new Foo() // eslint-disable-line no-new
 ```
 
+But preferably the `next-line` variant as it's easier to read and doesn't
+interfere with a true code line.
+
 #### Disabling rules for larger sections
 
-```JavaScript
+```js
 /* eslint-disable no-new */
 
-new Foo() // This code would normally generate a warning.
+// These three lines would normally generate a warning.
+new Foo()
+new Bar()
+new Baz()
 
 /* eslint-enable no-new */
 ```
@@ -231,10 +270,10 @@ If you disable a rule for an entire file, ensure you re-enable it at the end of
 the file to make sure that you aren't inadvertently disabling the rule for any
 code that ends up concatenated with it.
 
-See: [ESLint Documentation § Disabling Rules with Inline Comments](https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments)
+See: [ESLint Documentation § Disabling Rules with Inline Comments][disabling]
 
 If you have to disable a rule in more than a couple of cases, it may be the case
-that the rule is too noisy, or you may be doing something incorrectly.  Consider
+that the rule is too noisy, or you may be doing something incorrectly. Consider
 whether the rule should be removed from this configuration, or if there's a
 better way of writing the code in question.
 
@@ -242,17 +281,17 @@ better way of writing the code in question.
 
 New rules should be added when they stand a chance of catching a mistake, push
 developers to write better code, or if they make the code more consistently
-styled.  Avoid rules that force developers to jump through hoops just to keep
-the linter happy.
+styled. Avoid rules that force developers to jump through hoops just to keep the
+linter happy.
 
-Sometimes new rules get added to this package's dependencies.  It's worth
+Sometimes new rules get added to this package's dependencies. It's worth
 reviewing the changes when updating these dependencies to see if there are any
 useful additions we can enable.
 
 ### Removing rules
 
 If there's a rule that is generating too much noise in code that is otherwise
-perfectly fine, consider removing it from this configuration.  Before doing so,
+perfectly fine, consider removing it from this configuration. Before doing so,
 take the time to understand why the rule exists and whether there's a better way
 of writing the code in question.
 
@@ -260,3 +299,5 @@ of writing the code in question.
 
 - [ESLint](https://eslint.org/)
 - [ESLint § Shareable Configs](https://eslint.org/docs/developer-guide/shareable-configs)
+
+[disabling]: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
