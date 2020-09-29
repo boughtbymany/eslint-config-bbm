@@ -1,0 +1,12 @@
+{
+  "eslint.validate": ["javascript"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+  // This is handled by EditorConfig, but EditorConfig can't override to `false`
+  // (e.g. for snapshots) if the user setting is `true`, and some user may have
+  // it set to `true`, so we unset that here so EditorConfig can apply it
+  // selectively.
+  "files.trimTrailingWhitespace": false
+}

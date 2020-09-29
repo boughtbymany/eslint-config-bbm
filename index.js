@@ -26,5 +26,8 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-var': 'error',
+    'prefer-const': ['error', { destructuring: 'all' }],
+    curly: 'error',
+    eqeqeq: ['error', 'always', { null: 'ignore' }],
   },
 }
