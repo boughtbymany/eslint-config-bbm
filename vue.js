@@ -8,9 +8,17 @@ module.exports = {
     // Priority B: Strongly Recommended (Improving Readability)
     'vue/singleline-html-element-content-newline': 'off', // override for headers with dots
     'vue/name-property-casing': 'off', // override for Mutt widgets
-
     // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
     'vue/no-v-html': 'off', // override for translation
+    // Override self-closing settings by eslint-config-prettier
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'any',
+        },
+      },
+    ],
     // A11y rules taken from https://github.com/maranran/eslint-plugin-vue-a11y/blob/master/lib/configs/recommended.js
     // But switched to warn
     'vue-a11y/accessible-emoji': 'warn',
