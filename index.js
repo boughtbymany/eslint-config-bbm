@@ -1,9 +1,11 @@
+const importOrderRuleConfig = require('./rules/import-order.js')
+
 module.exports = {
   env: {
     es6: true,
     node: true,
   },
-  plugins: ['prettier', 'jsdoc'],
+  plugins: ['prettier', 'jsdoc', 'import'],
   extends: [
     'eslint:recommended',
     'plugin:prettier/recommended',
@@ -29,5 +31,7 @@ module.exports = {
     'prefer-const': ['error', { destructuring: 'all' }],
     curly: 'error',
     eqeqeq: ['error', 'always', { null: 'ignore' }],
+    // Import order config is a little long-winded so it is extracted.
+    'import/order': ['error', importOrderRuleConfig],
   },
 }
