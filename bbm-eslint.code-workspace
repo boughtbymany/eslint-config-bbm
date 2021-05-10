@@ -2,10 +2,4 @@
   "folders": [{
     "path": "."
   }],
-  "settings": {
-    "eslint.validate": [{
-      "language": "javascript",
-      "autoFix": true
-    }],
-  }
 }
