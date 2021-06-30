@@ -3,7 +3,7 @@
  */
 module.exports = {
   plugins: ['vue', 'vue-a11y'],
-  extends: ['./index.js', 'plugin:vue/recommended', '@vue/prettier'],
+  extends: ['./index.js', 'plugin:vue/recommended', 'prettier'],
   rules: {
     // Priority B: Strongly Recommended (Improving Readability)
     'vue/singleline-html-element-content-newline': 'off', // override for headers with dots

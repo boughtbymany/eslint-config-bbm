@@ -6,10 +6,45 @@
 - Flag areas where code can be improved.
 - Promote consistency in code style & structure.
 
+## Quickstart
+
+1. Install the package:
+
+    ```shell
+    npm i -D @boughtbymany/eslint-config-bbm
+    ```
+
+2. Install peer dependencies (npm v5/6 only - npm v7 will install peer dependencies automatically)
+
+    ```shell
+    npx install-peerdeps --dev @boughtbymany/eslint-config-bbm
+    ```
+
+3. Add the desired [configuration](#multiple-configurations) to your `.eslintrc.js`
+
+    ```js
+    module.exports = {
+      extends: [
+        '@boughtbymany/eslint-config-bbm',
+        // or
+        '@boughtbymany/eslint-config-bbm/<config name>', // e.g. '@boughtbymany/eslint-config-bbm/vue'
+      ],
+    }
+    ```
+
 ## Installation
 
 ```shell
-npm i -D @boughtbymany/eslint-config-bbm eslint eslint-config-prettier eslint-plugin-jsdoc eslint-plugin-prettier prettier
+npm i -D \
+  @boughtbymany/eslint-config-bbm \
+  @babel/core \
+  @babel/eslint-parser \
+  eslint \
+  eslint-config-prettier \
+  eslint-plugin-jsdoc \
+  eslint-plugin-prettier \
+  eslint-plugin-import \
+  prettier
 ```
 
 You may also need to install additional peer dependencies (the dependencies
@@ -190,6 +225,9 @@ action:
   }
 }
 ```
+
+If you are having issues with ESLint configuration rules not being respected by
+the editor, you may need to [disable Vetur's template validation](https://eslint.vuejs.org/user-guide/#trouble-with-visual-studio-code).
 
 ## Tips
 
